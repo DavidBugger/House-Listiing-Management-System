@@ -1,0 +1,93 @@
+{% load crispy_forms_tags %}
+<!-- Featured Property Section Start -->
+<div class="featured-property">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="col">
+                <form action = "" method = "get">
+                    {{ property_filter.form|crispy }}
+                    <br>
+                    <button class="ti-btn ti-btn-light !font-medium !border-0"
+                    type="submit">Search</button>
+                    
+                </form>
+            </div>
+            </div>
+            <div class="col-md-12">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">Properties</h3>
+                    <h2 class="text-anime">Featured Properties</h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Loop through your dynamic property items here -->
+            {% for property in property_filter.qs %}
+            <div class="col-md-4">
+                <!-- Property Item Start -->
+                <div class="property-item">
+                    <!-- Property Item Header Start -->
+                    <div class="property-header">
+                        <figure class="image-anime">
+                            <img src="{{ property.property_photo.url }}" alt="">
+                        </figure>
+
+                        <span class="property-label">{{ property.property_name }}</span>
+                    </div>
+                    <!-- Property Item Header End -->
+
+                    <!-- Property Item Body Start -->
+                    <div class="property-body">
+                        <h3>{{ property.property_name }}</h3>
+                        <p>{{ property.property_location }}</p>
+
+                        <div class="property-meta">
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    <img src="{{ property.bedroom_icon_url }}" alt="">
+                                </div>
+                                <span>{{ property.bedrooms }}</span>
+                            </div>
+
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    <img src="{{ property.bathroom_icon_url }}" alt="">
+                                </div>
+                                <span>{{ property.bathrooms }}</span>
+                            </div>
+
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    <img src="{{ property.area_icon_url }}" alt="">
+                                </div>
+                                <span>{{ property.area }}</span>
+                            </div>
+
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    <img src="{{ property.garage_icon_url }}" alt="">
+                                </div>
+                                <span>{{ property.garages }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Property Item Body End -->
+
+                    <!-- Property Item Footer Start -->
+                    <div class="property-footer">
+                        <p class="property-price">{{ property.price }}</p>
+                        <a href="{% url 'property_listing' id=property.id  %}" class="btn-default">View Property</a>
+                    </div>
+                    <!-- Property Item Footer End -->
+                </div>
+                <!-- Property Item End -->
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Featured Property Section End -->
