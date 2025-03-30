@@ -1,17 +1,12 @@
 {% load crispy_forms_tags %}
+{% load static %}
 <!-- Featured Property Section Start -->
-<div class="featured-property">
+<div class="featured-property" id="products">
     <div class="container">
         <div class="row">
             <div class="container">
                 <div class="col">
-                <form action = "" method = "get">
-                    {{ property_filter.form|crispy }}
-                    <br>
-                    <button class="ti-btn ti-btn-light !font-medium !border-0"
-                    type="submit">Search</button>
-                    
-                </form>
+                
             </div>
             </div>
             <div class="col-md-12">
@@ -48,30 +43,54 @@
                         <div class="property-meta">
                             <div class="property-amenity-item">
                                 <div class="icon-box">
-                                    <img src="{{ property.bedroom_icon_url }}" alt="">
+                                    {% comment %} <img src="{{ property.bedroom_icon_url }}" alt=""> {% endcomment %}
+										{% comment %} <img src="{% static 'images/icon-bedrooms.svg' %}" alt=""> {% endcomment %}
+                                        {% comment %} <i class = "fa fa-user"></i> {% endcomment %}
+                                        <i class="fa-solid fa-bed text-primary-800"></i>
+
                                 </div>
                                 <span>{{ property.bedrooms }}</span>
                             </div>
 
                             <div class="property-amenity-item">
                                 <div class="icon-box">
-                                    <img src="{{ property.bathroom_icon_url }}" alt="">
+                                    {% comment %} <img src="{{ property.bathroom_icon_url }}" alt=""> {% endcomment %}
+										{% comment %} <img src="{% static 'images/icon-bathrooms.svg' %}" alt=""> {% endcomment %}
+                                        <i class="fa-solid fa-bath"></i>
+
                                 </div>
                                 <span>{{ property.bathrooms }}</span>
                             </div>
 
                             <div class="property-amenity-item">
                                 <div class="icon-box">
-                                    <img src="{{ property.area_icon_url }}" alt="">
+                                    {% comment %} <img src="{% static 'images/icon-areas.svg' %}" alt=""> {% endcomment %}
+                                    <i class="fa-solid fa-land-mine-on"></i>s
+
                                 </div>
                                 <span>{{ property.area }}</span>
                             </div>
 
                             <div class="property-amenity-item">
                                 <div class="icon-box">
-                                    <img src="{{ property.garage_icon_url }}" alt="">
+                                    {% comment %} <img src="{% static 'images/icon-garages.svg' %}" alt=""> {% endcomment %}
+                                    <i class="fa-solid fa-warehouse"></i>
+
                                 </div>
                                 <span>{{ property.garages }}</span>
+                            </div>
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    {% comment %} <img src="{% static 'images/icon-garages.svg' %}" alt=""> {% endcomment %}
+                                    <i class="fa-solid fa-warehouse"></i>
+
+                                </div>
+                                <span>  {% if property.is_sold %}
+                                    <span class="badge bg-success text-white">Sold</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-black">Not Sold</span>
+                                {% endif %}
+                                    </span>
                             </div>
                         </div>
                     </div>
@@ -79,7 +98,8 @@
 
                     <!-- Property Item Footer Start -->
                     <div class="property-footer">
-                        <p class="property-price">{{ property.price }}</p>
+                        <i class="fa-solid fa-money-bill text-warning"></i>
+                         <p class="property-price">{{ property.price }}</p>
                         <a href="{% url 'property_listing' id=property.id  %}" class="btn-default">View Property</a>
                     </div>
                     <!-- Property Item Footer End -->

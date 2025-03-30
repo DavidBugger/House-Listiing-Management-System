@@ -25,8 +25,19 @@
 
          <!-- MAIN-CONTENT -->
          <!-- MAIN-CONTENT -->
-         <div class="main-content app-content ml-5">
-            <div class="container-fluid text-center py-5">
+         <div class="main-content app-content " >
+            {% block content %}
+    
+            <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+                  <div class="bg-primary text-white alert alert-{{ message.tags }}">
+                    {{ message }}
+                   
+                  </div>
+                {% endfor %}
+              {% endif %}
+            <div class="container-fluid text-center py-5" style="margin-left:45px !important;">
                 <div class="container px-4 py-5" id="hanging-icons">
                     <div class="row g-4">
                         <div class="col d-flex align-items-start">
@@ -94,19 +105,7 @@
                 </div>
             </div>
 
-
-
 </div>
-
-        <!-- END MAIN-CONTENT -->
-
-        <!-- END MAIN-CONTENT -->
-
-            <!-- SEARCH-MODAL -->
-
-            
-            
-            <!-- END SEARCH-MODAL -->
-
-          {% include 'components/admin_footer.html'%}
+{% endblock %}
+{% include 'components/admin_footer.html'%}
 

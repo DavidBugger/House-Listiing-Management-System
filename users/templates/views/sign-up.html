@@ -26,13 +26,8 @@
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <!-- MAIN JS -->
         <script src="{% static 'assets/js/authentication-main.js'%}"></script>
-
-    
 	</head>
-
     <body>
-
-    
 
         <div class="container">
             {% block content %}
@@ -52,9 +47,7 @@
                     <div class="xxl:col-span-4 xl:col-span-4 lg:col-span-4 md:col-span-6 sm:col-span-8 col-span-12">
                         <div class="my-[2.5rem] flex justify-center">
                             <a class="navbar-brand" style="font-weight:bold; font-size:20px;" href="{% url 'main' %}">
-                                {% comment %} <img src="{% static 'images/logo.svg' %}" alt="Logo"> {% endcomment %}
-                                <span style="color:#2d3d7e;">ADRON<span style="color:#ed7d3a; ">HOMES</span>
-                                
+                                <span style="color:#2d3d7e;">DAN MAMA<span style="color:#ed7d3a; ">HOMES</span>  
                             </a>
                         </div>
                         <div class="box">
@@ -64,39 +57,22 @@
                                     creating a free account !</p>
                                     <form action="" method="POST">
                                 <div class="grid grid-cols-12 gap-y-4">
-                                   
-
                                     <div class="xl:col-span-12 col-span-12">
                                         {% csrf_token %}
                                         {{ register_form|crispy }}
                                        
                                     </div>
-                                   
                                     <div class="xl:col-span-12 col-span-12 grid mt-2">
                                         <button type="submit" id="register-btn" class="ti-btn ti-btn-lg bg-primary text-white !font-medium dark:border-defaultborder/10">Create
                                             Account</button>
                                     </div>
                               </form>
-
                                 </div>
                                 <div class="text-center">
                                     <p class="text-[0.75rem] text-[#8c9097] dark:text-white/50 mt-4">Already have an account? <a
                                             href="/sign-in" class="text-primary">Sign In</a></p>
                                 </div>
-                                {% comment %} <div class="text-center my-4 authentication-barrier">
-                                    <span>OR</span>
-                                </div> {% endcomment %}
-                                {% comment %} <div class="btn-list text-center">
-                                    <button aria-label="button" type="button" class="ti-btn ti-btn-icon ti-btn-light me-[0.365rem]">
-                                        <i class="ri-facebook-line font-bold text-dark opacity-[0.7]"></i>
-                                    </button>
-                                    <button aria-label="button" type="button" class="ti-btn ti-btn-icon ti-btn-light me-[0.365rem]">
-                                        <i class="ri-google-line font-bold text-dark opacity-[0.7]"></i>
-                                    </button>
-                                    <button aria-label="button" type="button" class="ti-btn ti-btn-icon ti-btn-light">
-                                        <i class="ri-twitter-line font-bold text-dark opacity-[0.7]"></i>
-                                    </button>
-                                </div> {% endcomment %}
+                               
                             </div>
                         </div>
                     </div>

@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +43,8 @@ INSTALLED_APPS = [
     'compressor',
     'crispy_forms',
     'crispy_tailwind',
+    'cities_light',
+    'staff',
 
 ]
 
@@ -81,23 +82,23 @@ WSGI_APPLICATION = 'house_listing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Change this to MySQL
-        'NAME': 'house_listing',                # Name of your MySQL database
-        'USER': 'root',                         # Your MySQL username
-        'PASSWORD': '',                         # Your MySQL password
-        'HOST': 'localhost',                   # Change if your MySQL is hosted remotely
-        'PORT': '3306',                        # Default MySQL port, modify if needed
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # Change this to MySQL
+#         'NAME': 'house_listing',                # Name of your MySQL database
+#         'USER': 'root',                         # Your MySQL username
+#         'PASSWORD': '',                         # Your MySQL password
+#         'HOST': 'localhost',                   # Change if your MySQL is hosted remotely
+#         'PORT': '3306',                        # Default MySQL port, modify if needed
+#     }
+# }
 
 # Login Settings
 LOGIN_REDIRECT_URL = '/home/'
@@ -108,8 +109,6 @@ LOGIN_URL = '/login/'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
-
-
 
 
 # Password validation
@@ -172,3 +171,14 @@ COMPRESS_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# EMail configuration# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yourmailserver.com'  # Use your SMTP server (e.g., 'smtp.gmail.com')
+EMAIL_PORT = 587  # For TLS, use port 587. If you're using SSL, use port 465.
+EMAIL_USE_TLS = True  # If you're using TLS
+EMAIL_HOST_USER = 'your-email@example.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+DEFAULT_FROM_EMAIL = 'your-email@example.com'  # Default "from" email address
+

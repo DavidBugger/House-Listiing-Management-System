@@ -2,7 +2,6 @@
 <header class="app-header">
     <nav class="main-header !h-[3.75rem]" aria-label="Global">
         <div class="main-header-container ps-[0.725rem] pe-[1rem] ">
-
             <div class="header-content-left">
                 <!-- Start::header-element -->
                 <div class="header-element">
@@ -18,7 +17,6 @@
                     </div>
                 </div>
                 <!-- End::header-element -->
-
                 <!-- Start::header-element -->
                 <div class="header-element md:px-[0.325rem] !items-center">
                     <!-- Start::header-link -->
@@ -30,15 +28,12 @@
             </div>
 
             <div class="header-content-right">
-
-                <div class="header-element py-[1rem] md:px-[0.65rem] px-2 header-search">
+                {% comment %} <div class="header-element py-[1rem] md:px-[0.65rem] px-2 header-search">
                     <button aria-label="button" type="button" data-hs-overlay="#search-modal"
                         class="inline-flex flex-shrink-0 justify-center items-center gap-2  rounded-full font-medium focus:ring-offset-0 focus:ring-offset-white transition-all text-xs dark:bg-bgdark dark:hover:bg-black/20 dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white dark:focus:ring-white/10 dark:focus:ring-offset-white/10">
                         <i class="bx bx-search-alt-2 header-link-icon"></i>
                     </button>
-                </div>
-
-          
+                </div> {% endcomment %}
 
                 <!-- light and dark theme -->
                 <div class="header-element header-theme-mode hidden !items-center sm:block !py-[1rem] md:!px-[0.65rem] px-2">
@@ -54,11 +49,8 @@
                     </a>
                 </div>
                 <!-- End light and dark theme -->
-
-               
-
                 <!--Header Notifictaion -->
-                <div class="header-element py-[1rem] md:px-[0.65rem] px-2 notifications-dropdown header-notification hs-dropdown ti-dropdown !hidden md:!block [--placement:bottom-left]">
+                {% comment %} <div class="header-element py-[1rem] md:px-[0.65rem] px-2 notifications-dropdown header-notification hs-dropdown ti-dropdown !hidden md:!block [--placement:bottom-left]">
                     <button id="dropdown-notification" type="button"
                         class="hs-dropdown-toggle relative ti-dropdown-toggle !p-0 !border-0 flex-shrink-0  !rounded-full !shadow-none align-middle text-xs">
                         <i class="bx bx-bell header-link-icon  text-[1.125rem]"></i>
@@ -201,9 +193,8 @@
                         </div>
                         </div>
                     </div>
-                </div>
+                </div> {% endcomment %}
                 <!--End Header Notifictaion -->
-
 
                 <!-- Fullscreen -->
                 {% comment %} <div class="header-element header-fullscreen py-[1rem] md:px-[0.65rem] px-2">
@@ -219,11 +210,14 @@
 
                 <!-- Header Profile -->
                 <div class="header-element md:!px-[0.65rem] px-2 hs-dropdown !items-center ti-dropdown [--placement:bottom-left]">
-
                     <button id="dropdown-profile" type="button"
                         class="hs-dropdown-toggle ti-dropdown-toggle !gap-2 !p-0 flex-shrink-0 sm:me-2 me-0 !rounded-full !shadow-none text-xs align-middle !border-0 !shadow-transparent ">
-                        
-                        <img class="inline-block rounded-full " src="{{ photo_url }}"  width="32" height="32" alt="User Photo">
+                        {% if request.user.profile.photo %}
+                        <img class="inline-block rounded-full" src="{{ request.user.profile.photo.url }}" width="32" height="32" alt="User Photo">
+                    {% else %}
+                        <i class="fas fa-user fa-2x"></i>
+                    {% endif %}
+                    
                         <!-- user_photo.html -->
                         {% comment %} {% if photo_url %}
                         <img src="{{ photo_url }}" alt="User Photo" />
@@ -243,24 +237,24 @@
                         {% if request.user.is_authenticated %}
                         <ul class="text-defaulttextcolor font-medium dark:text-[#8c9097] dark:text-white/50">
                             <li>
-                                <a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0  !p-[0.65rem] !inline-flex" href="profile.html">
+                                <a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0  !p-[0.65rem] !inline-flex" href="{% url 'profile'%}">
                                 <i class="ti ti-user-circle text-[1.125rem] me-2 opacity-[0.7]"></i>Profile
                                 </a>
                             </li>
-                            <li>
+                            {% comment %} <li>
                                 <a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0  !p-[0.65rem] !inline-flex" href="mail.html"><i
                                     class="ti ti-inbox text-[1.125rem] me-2 opacity-[0.7]"></i>Inbox <span
                                     class="!py-1 !px-[0.45rem] !font-semibold !rounded-sm text-success text-[0.75em] bg-success/10 ms-auto">25</span>
                                 </a>
-                            </li>
-                            <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0 !p-[0.65rem] !inline-flex" href="todo.html"><i
-                                    class="ti ti-clipboard-check text-[1.125rem] me-2 opacity-[0.7]"></i>Task Manager</a></li>
-                            <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0 !p-[0.65rem] !inline-flex" href="mail-settings.html"><i
-                                    class="ti ti-adjustments-horizontal text-[1.125rem] me-2 opacity-[0.7]"></i>Settings</a></li>
-                            <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0 !p-[0.65rem] !inline-flex " href="javascript:void(0);"><i
-                                    class="ti ti-wallet text-[1.125rem] me-2 opacity-[0.7]"></i>Bal: $7,12,950</a></li>
-                            <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !p-[0.65rem] !gap-x-0 !inline-flex" href="chat.html"><i
-                                    class="ti ti-headset text-[1.125rem] me-2 opacity-[0.7]"></i>Support</a></li>
+                            </li> {% endcomment %}
+                                {% comment %} <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0 !p-[0.65rem] !inline-flex" href="todo.html"><i
+                                        class="ti ti-clipboard-check text-[1.125rem] me-2 opacity-[0.7]"></i>Task Manager</a></li>
+                                <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0 !p-[0.65rem] !inline-flex" href="mail-settings.html"><i
+                                        class="ti ti-adjustments-horizontal text-[1.125rem] me-2 opacity-[0.7]"></i>Settings</a></li>
+                                <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !gap-x-0 !p-[0.65rem] !inline-flex " href="javascript:void(0);"><i
+                                        class="ti ti-wallet text-[1.125rem] me-2 opacity-[0.7]"></i>Bal: $7,12,950</a></li>
+                                <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !p-[0.65rem] !gap-x-0 !inline-flex" href="chat.html"><i
+                                        class="ti ti-headset text-[1.125rem] me-2 opacity-[0.7]"></i>Support</a></li> {% endcomment %}
                             <li><a class="w-full ti-dropdown-item !text-[0.8125rem] !p-[0.65rem] !gap-x-0 !inline-flex" href="{% url 'logout' %}"><i
                                 class="ti ti-logout text-[1.125rem] me-2 opacity-[0.7]"></i>Log Out</a></li>
                         </ul>
@@ -270,15 +264,14 @@
                 <!-- End Header Profile -->
 
                 <!-- Switcher Icon -->
-                <div class="header-element md:px-[0.48rem]">
+                {% comment %} <div class="header-element md:px-[0.48rem]">
                     <button aria-label="button" type="button"
                         class="hs-dropdown-toggle switcher-icon inline-flex flex-shrink-0 justify-center items-center gap-2  rounded-full font-medium  align-middle transition-all text-xs dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white dark:focus:ring-white/10 dark:focus:ring-offset-white/10"
                         data-hs-overlay="#hs-overlay-switcher">
                         <i class="bx bx-cog header-link-icon animate-spin-slow"></i>
                     </button>
-                </div>
+                </div> {% endcomment %}
                 <!-- Switcher Icon -->
-
             </div>
             <!-- End::header-element -->
         </div>

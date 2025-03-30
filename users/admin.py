@@ -9,3 +9,4 @@ class LocationAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Location, LocationAdmin)
+        
