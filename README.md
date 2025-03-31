@@ -1,4 +1,4 @@
-# House Listing Management System
+![2024-05-15](https://github.com/user-attachments/assets/ed4d14fb-0a4c-4f02-b731-fa8c396ce658)# House Listing Management System
 
 This project is a Django application for managing house listings. Users can add, view, update, and delete house listings with features like location, price, and number of rooms. The application also allows users to upload images of the houses.
 
@@ -59,3 +59,16 @@ To register into the system you can navigate to http://127.0.0.1:8000/sign-up/
 http://127.0.0.1:8000/admin/
 username: globen
 password: test@123!
+SCREENSHOTS <br>
+![2024-05-15](https://github.com/user-attachments/assets/915d1e43-7ecd-47c1-9fa5-74947a959670) <br>
+
+Authentication <br>
+
+![2024-05-19 (5)](https://github.com/user-attachments/assets/d0c99233-2d47-48e7-a37e-a062706d5864) <br>
+
+
+Dashboard <br>
+
+![2024-05-19 (6)](https://github.com/user-attachments/assets/03140038-b96c-4271-89a7-6d4bfecc7fd6)
+
+
